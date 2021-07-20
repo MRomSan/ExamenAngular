@@ -1,1 +1,27 @@
-<p>consulta works!</p>
+<h2>Consulta empleado e IPC</h2>
+
+<form (submit)="consultarEmp()" #formConsulta="ngForm">
+    <label for="id">ID </label>
+    <input type="number" min="1" name="id" id="id" placeholder="ID del empleado" required="required" [(ngModel)]="idSel" #id="ngModel" />
+    <div *ngIf="id.invalid && (id.dirty || id.touched)">
+        <div *ngIf="id.errors?.required">
+            El ID es obligatorio
+        </div>
+    </div>
+    <label for="ipc">IPC</label>
+    <input type="number" step="0.1" min="0" name="ipc" id="ipc" placeholder="IPC aplicable" [(ngModel)]="ipcSel" /> % 
+    <button type="submit" [disabled]="!formConsulta.form.valid">Consultar</button>
+    <button type="reset">Borrar</button>
+</form>
+
+<div *ngIf="error!=''">
+    <p>{{error}}</p>
+</div>
+
+<div *ngIf="empleado!=null">
+    <h3>Datos del empleado</h3>
+    <p>Nombre: {{empleado.employee_name}}</p>
+    <p>Salario: {{empleado.employee_salary}}</p>
+    <p>Salario con IPC aplicado: {{salario_ipc}}</p>
+    <p>Edad: {{empleado.employee_age}}</p>
+</div>

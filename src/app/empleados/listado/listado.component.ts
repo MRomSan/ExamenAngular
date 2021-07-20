@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Empleado } from 'src/app/interfaces/empleado';
 import { EmpleadosService } from 'src/app/services/empleados.service';
 
 @Component({
@@ -10,14 +9,20 @@ import { EmpleadosService } from 'src/app/services/empleados.service';
 export class ListadoComponent implements OnInit {
 
   empleados:any;
-  error:string;
+  mensaje:string;
 
   constructor(private es:EmpleadosService) {
     this.empleados = null;
-    this.error = "";
+    this.mensaje = "Cargando datos...";
   }
 
   ngOnInit(): void {
+    this.verListadoEmpleados();
+  }
+
+  recargarDatos() {
+    this.empleados=null;
+    this.mensaje = "Cargando datos...";
     this.verListadoEmpleados();
   }
 
@@ -28,7 +33,8 @@ export class ListadoComponent implements OnInit {
         this.empleados=empleados.data;
       },
       errors=>{
-        this.error = "Ha ocurrido un error obteniendo los datos de empleados: " + errors;
+        this.mensaje = "Ha ocurrido un error obteniendo los datos de empleados: [" + errors.status + "]" + errors.statusText;
+        console.log(errors);
       }
     );
   }

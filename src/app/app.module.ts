@@ -8,6 +8,7 @@ import { ListadoComponent } from './empleados/listado/listado.component';
 import { ToledoComponent } from './ciudades/toledo/toledo.component';
 import { MadridComponent } from './ciudades/madrid/madrid.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
