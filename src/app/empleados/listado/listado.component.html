@@ -1,1 +1,27 @@
-<p>listado works!</p>
+<h2>Listado de empleados</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Salario</th>
+            <th>Edad</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="empleados!=null; else cargando">
+        <tr *ngFor="let emp of empleados">
+            <td>{{emp.id}}</td>
+            <td>{{emp.employee_name}}</td>
+            <td>{{emp.employee_salary}}</td>
+            <td>{{emp.employee_age}}</td>
+        </tr>
+    </tbody>
+    <ng-template #cargando>
+        <tbody>
+            <tr>
+                <td colspan="4" align="center">Cargando datos</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>

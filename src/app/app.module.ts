@@ -7,6 +7,7 @@ import { ConsultaComponent } from './empleados/consulta/consulta.component';
 import { ListadoComponent } from './empleados/listado/listado.component';
 import { ToledoComponent } from './ciudades/toledo/toledo.component';
 import { MadridComponent } from './ciudades/madrid/madrid.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MadridComponent } from './ciudades/madrid/madrid.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
